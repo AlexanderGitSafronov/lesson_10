@@ -19,7 +19,7 @@
         }
         return result
     }
-    console.log(myIndexOf(a, 5));
+    console.log('indexOf:', myIndexOf(a, 5));
 
          //lastIndexOf
         var b = [1, 5, 9, 4, 5, 9]
@@ -32,29 +32,34 @@
         }
         return result
     }
-    console.log(myLastIndexOf(b, 9));
+    console.log('lastIndexOf :', myLastIndexOf(b, 9));
 
     //find
-    var v = [2, 3, 4, 5];
-    function myFind(arr, item){
+    var arrayForFind = [2, 3, 4, 5];
+    function myFind(arr, callback){
         for (var i = 0; i < arr.length; i++){
-            if(arr[i] === item) {
+            if(callback(arr[i]) === true) {
                 return arr[i];
             } 
         }
     }
-    console.log(myFind(v, 4));
+    var x = myFind(arrayForFind, function(arg){
+        return arg === 3;
+    })
+    console.log('my find :', x );
 
     //findIndex
-    var q = [1, 5, 9, 4, 5, 9]
-        function myFindIndex(arr, item){
+    var arrayMyFindIndex = [1, 5, 9, 4, 5, 9]
+        function myFindIndex(arr, callback){
         for (var i = 0; i < arr.length; i++){
-            if(arr[i] === item ) {
+            if(callback(arr[i]) === true) {
                 return i;
             } 
         }
     }
-    console.log(myFindIndex(q, 1));
+    console.log('MyFindIndex :', myFindIndex(arrayMyFindIndex, function(item){
+        return item === 1;
+    }));
 
     //includes
     var inc = [2, 3, 4, 5, 88];
@@ -67,33 +72,38 @@
         }
         return res;
     }
-    console.log(myIncludes(inc, 88));
+    console.log('includes :', myIncludes(inc, 88));
 
     //some
-    var som = [3, 1, 11, 5];
-    function mySome(arr){
-        var res = false;
+    var some = [3, 1, 11, 5];
+    function mySome(arr, callback){
         for (var i = 0; i < arr.length; i++){
-            if(arr[i] > 10) {
-                 res = true;
-            } 
+            if(callback(arr[i]) === true){
+                return true
+            }
         }
-        return res;
+        return false;
     }
-    console.log(mySome(som));
+    console.log('mySome :', mySome(some, function(arg){
+        return arg > 10;
+    }));
 
         //every
-    var ev = [33, 22, 1, 55];
-    function myEvery(arr){
-        var res = true;
+    var every = [33, 3, 44, 55];
+    function myEvery(arr, callback){
+        var res = false;
         for (var i = 0; i < arr.length; i++){
-            if(arr[i] < 10) {
-                 res = false;
-            } 
+            if(callback(arr[i]) === true){
+                 res = true
+            } else {
+                return false
+            }
         }
         return res;
     }
-    console.log(myEvery(ev));
+    console.log('myEvery :', myEvery(every, function(arg){
+        return arg > 10;
+    }));
     </script>
 </body>
 </html>
